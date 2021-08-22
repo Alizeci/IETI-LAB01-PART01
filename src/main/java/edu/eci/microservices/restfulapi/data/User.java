@@ -1,21 +1,20 @@
 package edu.eci.microservices.restfulapi.data;
 
 import java.util.Date;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class User {
 
-    private AtomicInteger id;
+    private String id;
     private String name;
     private String email;
     private String lastName;
     private Date createdAt;
 
-    public AtomicInteger getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(AtomicInteger id) {
+    public void setId(String id) {
         this.id = id;
     }
 
