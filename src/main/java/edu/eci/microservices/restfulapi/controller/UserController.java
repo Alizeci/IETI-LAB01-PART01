@@ -24,12 +24,8 @@ public class UserController {
     @PostMapping
     public ResponseEntity<User> create(@RequestBody UserDto userDto )
     {
-        User newUser = new User();
-        newUser.setName(userDto.getName());
-        newUser.setLastName(userDto.getLastName());
-        newUser.setEmail(userDto.getEmail());
         Date date = Calendar.getInstance().getTime();
-        newUser.setCreatedAt(date);
+        User newUser = new User (userDto.getName(),userDto.getEmail(), userDto.getLastName(), date );
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.create(newUser));
     }
 
@@ -48,10 +44,7 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<User> update( @RequestBody UserDto userDto, @PathVariable String id )
     {
-        User newUser = new User();
-        newUser.setName(userDto.getName());
-        newUser.setLastName(userDto.getLastName());
-        newUser.setEmail(userDto.getEmail());
+        User newUser = new User(userDto.getName(), userDto.getEmail(), userDto.getLastName());
         return ResponseEntity.status(HttpStatus.OK).body(userService.update(newUser, id));
     }
 

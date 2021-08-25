@@ -48,10 +48,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User update(User user, String userId) {
-        user.setId(userId);
         Date date = Calendar.getInstance().getTime();
+        user.setId(userId);
         user.setCreatedAt(date);
-        return users.put(userId, user);
+        return users.containsKey(userId) ? users.put(userId, user) : null;
     }
 
 }

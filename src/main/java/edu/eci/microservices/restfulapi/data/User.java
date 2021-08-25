@@ -10,6 +10,19 @@ public class User {
     private String lastName;
     private Date createdAt;
 
+    public User(String name, String email, String lastName) {
+        this.name = name;
+        this.email = email;
+        this.lastName = lastName;
+    }
+
+    public User(String name, String email, String lastName, Date createdAt) {
+        this.name = name;
+        this.email = email;
+        this.lastName = lastName;
+        this.createdAt = createdAt;
+    }
+
     public String getId() {
         return id;
     }
