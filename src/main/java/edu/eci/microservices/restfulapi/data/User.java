@@ -1,6 +1,6 @@
 package edu.eci.microservices.restfulapi.data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class User {
 
@@ -8,7 +8,7 @@ public class User {
     private String name;
     private String email;
     private String lastName;
-    private Date createdAt;
+    private LocalDate createdAt;
 
     public User(String name, String email, String lastName) {
         this.name = name;
@@ -16,7 +16,7 @@ public class User {
         this.lastName = lastName;
     }
 
-    public User(String name, String email, String lastName, Date createdAt) {
+    public User(String name, String email, String lastName, LocalDate createdAt) {
         this.name = name;
         this.email = email;
         this.lastName = lastName;
@@ -55,11 +55,7 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
+    public LocalDate getCreatedAt() { return createdAt; }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
+    public void setCreatedAt(LocalDate createdAt) { this.createdAt = createdAt; }
 }

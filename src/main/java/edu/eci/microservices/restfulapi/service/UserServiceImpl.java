@@ -26,11 +26,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(String id) {
-        return isValidUser(id) ? users.get(id) : null;
-    }
-
-    public boolean isValidUser(String userId) {
-        return users.containsKey(userId);
+        return users.get(id);
     }
 
     @Override
@@ -43,15 +39,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean deleteById(String id) {
         users.remove(id);
-        return !isValidUser(id);
+        return !users.containsKey(id);
     }
 
     @Override
     public User update(User user, String userId) {
-        Date date = Calendar.getInstance().getTime();
         user.setId(userId);
-        user.setCreatedAt(date);
-        return users.containsKey(userId) ? users.put(userId, user) : null;
-    }
+        return users.put(userId, user);}
 
 }

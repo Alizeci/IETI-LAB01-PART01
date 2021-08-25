@@ -8,8 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -24,8 +23,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<User> create(@RequestBody UserDto userDto )
     {
-        Date date = Calendar.getInstance().getTime();
-        User newUser = new User (userDto.getName(),userDto.getEmail(), userDto.getLastName(), date );
+        User newUser = new User (userDto.getName(),userDto.getEmail(), userDto.getLastName(), LocalDate.now());
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.create(newUser));
     }
 
@@ -44,7 +42,7 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<User> update( @RequestBody UserDto userDto, @PathVariable String id )
     {
-        User newUser = new User(userDto.getName(), userDto.getEmail(), userDto.getLastName());
+        User newUser = new User(userDto.getName(), userDto.getEmail(), userDto.getLastName(),LocalDate.now());
         return ResponseEntity.status(HttpStatus.OK).body(userService.update(newUser, id));
     }
 
@@ -53,5 +51,4 @@ public class UserController {
     {
         return ResponseEntity.status(HttpStatus.OK).body(userService.deleteById(id));
     }
-
 }
